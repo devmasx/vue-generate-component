@@ -19,7 +19,7 @@
   "author": "Netanel Basal <netanel7799@gmail.com>",
   "license": "ISC",
   "bin": {
-    "vgc": "dist/vgc.js"
+    "vgc": "src/vgc.js"
   },
   "repository": {
     "type": "git",
