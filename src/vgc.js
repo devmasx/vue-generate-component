@@ -2,7 +2,7 @@
 const commandLineArgs = require("command-line-args");
 const VueGenerator = require("./VueGenerator");
 const TemplateRender = require("./TemplateRender");
-
+const getConfig = require("./config").getConfig;
 const optionDefinitions = [
   {
     name: "help",
@@ -19,7 +19,7 @@ const optionDefinitions = [
     defaultOption: true
   },
   {
-    name: "template",
+    name: "templates",
     type: String,
     group: "options",
     description: "Template directory"
@@ -32,12 +32,11 @@ const options = cli.parse().options;
 if (options.help) {
   console.log(cli.getUsage(cli));
 }
-// console.log(options);
+
+const configOptions = getConfig(options);
+
 const componentName = options.create;
-const templateDir = options.template;
+const templateDir = configOptions.templates;
+
 const templateRender = new TemplateRender(templateDir);
 new VueGenerator(templateRender).vueComponents({ componentName });
-// const `Component.vue.ejs`,
-//   "./components/Button.vue",
-//   { componentName: "Button" }
-// new TemplateGenerator();
