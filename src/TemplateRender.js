@@ -5,9 +5,9 @@ class TemplateRender {
   constructor(templateDir = `${__dirname}/templates`) {
     this.templateDir = templateDir;
   }
-  render(templateName, outputPath, variables) {
-    const templatePath = `${this.templateDir}/${templateName}`;
-    const templateString = fse.readFileSync(templatePath, {
+  render(templatePath, outputPath, variables) {
+    const templateFullPath = `${this.templateDir}/${templatePath}`;
+    const templateString = fse.readFileSync(templateFullPath, {
       encoding: "utf8"
     });
     const result = ejs.render(templateString, variables);
