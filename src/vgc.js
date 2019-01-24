@@ -23,6 +23,12 @@ const optionDefinitions = [
     type: String,
     group: "options",
     description: "Template directory"
+  },
+  {
+    name: "outputFolder",
+    type: String,
+    group: "options",
+    description: "change outputFolder to render templates"
   }
 ];
 
@@ -35,8 +41,9 @@ if (options.help) {
 
 const configOptions = getConfig(options);
 
-const componentName = options.create;
 const templateDir = configOptions.templates;
+const outputFolder = configOptions.outputFolder;
+const componentName = options.create;
 
 const templateRender = new TemplateRender(templateDir);
-new VueGenerator(templateRender).vueComponents({ componentName });
+new VueGenerator(outputFolder, templateRender).vueComponents({ componentName });
