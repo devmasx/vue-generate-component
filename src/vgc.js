@@ -1,5 +1,5 @@
 #! /usr/bin/env node
-const core = require("./vgcCore");
+const core = require("./core");
 const VueGenerator = require("./VueGenerator");
 const { outputFolder, templateDir, componentName } = core.configOptions;
 
