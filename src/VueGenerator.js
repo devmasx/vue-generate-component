@@ -1,12 +1,9 @@
 const TemplateRender = require("../src/TemplateRender");
 
 class VueGenerator {
-  constructor(
-    outputFolder = "./src/components",
-    templateRender = new TemplateRender()
-  ) {
+  constructor({ outputFolder = "./src/components", templateDir }) {
     this.outputFolder = outputFolder;
-    this.templateRender = templateRender;
+    this.templateRender = new TemplateRender(templateDir);
   }
   vueComponents({ componentName, ...rest }) {
     this.templateRender.render(
