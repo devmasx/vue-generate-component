@@ -1,17 +1,17 @@
-const TemplateGenerator = require("../src/TemplateGenerator");
+const TemplateRender = require("../src/TemplateRender");
 
 class VueGenerator {
   constructor() {
-    this.templateGenerator = new TemplateGenerator();
+    this.templateRender = new TemplateRender();
   }
   vueComponents({ componentName, ...rest }) {
-    this.templateGenerator.renderTemplate(
+    this.templateRender.render(
       `components/Component.vue.ejs`,
       `./components/${componentName}/${componentName}.vue`,
       { componentName }
     );
 
-    this.templateGenerator.renderTemplate(
+    this.templateRender.render(
       `components/Component.scss.ejs`,
       `./components/${componentName}/${componentName}.scss`,
       { componentName }

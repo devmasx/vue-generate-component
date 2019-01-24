@@ -1,11 +1,11 @@
 const ejs = require("ejs");
 const fse = require("fs-extra");
 
-class TemplateGenerator {
+class TemplateRender {
   constructor(templateDir = `${__dirname}/templates`) {
     this.templateDir = templateDir;
   }
-  renderTemplate(templateName, outputPath, variables) {
+  render(templateName, outputPath, variables) {
     const templatePath = `${this.templateDir}/${templateName}`;
     const templateString = fse.readFileSync(templatePath, {
       encoding: "utf8"
@@ -15,4 +15,4 @@ class TemplateGenerator {
   }
 }
 
-module.exports = TemplateGenerator;
+module.exports = TemplateRender;
