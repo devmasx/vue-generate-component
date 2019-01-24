@@ -1,0 +1,4 @@
+{
+  "templates": "src/templates",
+  "outputFolder": "lib/components"
+}
