@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 const commandLineArgs = require("command-line-args");
 const VueGenerator = require("./VueGenerator");
+const TemplateRender = require("./TemplateRender");
 
 const optionDefinitions = [
   {
@@ -14,8 +15,14 @@ const optionDefinitions = [
     alias: "c",
     type: String,
     group: "options",
-    description: "generate Vue js component",
+    description: "generate Vuejs component",
     defaultOption: true
+  },
+  {
+    name: "template",
+    type: String,
+    group: "options",
+    description: "Template directory"
   }
 ];
 
@@ -27,7 +34,9 @@ if (options.help) {
 }
 // console.log(options);
 const componentName = options.create;
-new VueGenerator().vueComponents({ componentName });
+const templateDir = options.template;
+const templateRender = new TemplateRender(templateDir);
+new VueGenerator(templateRender).vueComponents({ componentName });
 // const `Component.vue.ejs`,
 //   "./components/Button.vue",
 //   { componentName: "Button" }
